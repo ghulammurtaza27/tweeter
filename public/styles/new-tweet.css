@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+label {
+  width: 100%;
+}
+.new-tweet {
+  width: 80%;
+}
+
+main div {
+
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Bungee', cursive;
+  margin-top: 20px;
+}
+#tweet-text {
+  background-color: #f4f1ec;
+  height: 1.75em;
+  border: none;
+  border-bottom: 4px solid black;
+}
+button {
+  
+  background-color: #4056A1;
+  color: white;
+}

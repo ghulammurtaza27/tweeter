@@ -1,0 +1,11 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #7c8000;
+  background-image: url(http://www.transparenttextures.com/patterns/rough-diagonal.png);
+
+}
