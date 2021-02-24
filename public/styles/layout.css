@@ -16,6 +16,9 @@ main {
   display: flex;
   flex-direction: column;
 }
+.hide-it {
+  display: none;
+}
 
 /*
  * Global layout stuff

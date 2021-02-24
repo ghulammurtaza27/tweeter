@@ -9,10 +9,12 @@ $(document).ready(function() {
   $("form").on('submit', function (event) {
     
     event.preventDefault();
-    const $textInput = $(this).serialize().slice(5);
-    console.log($textInput);
-    
+
+    const $textInput = $('#tweet-text').val();
     if ($textInput.length <= 140 && $textInput.length !== 0) {
+
+      $('h4').addClass('hide-it');
+
       $.ajax({
         method: "POST",
         url: "/tweets",
@@ -20,9 +22,9 @@ $(document).ready(function() {
       });
       return;
     }
-    else if ($textInput.length > 140) {
-      $("main").prepend("<h4> Tweet Length is invalid!</h4>");
-    } 
+    else {
+      $('h4').removeClass('hide-it');
+    }
   });
   
   
