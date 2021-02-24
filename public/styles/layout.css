@@ -13,6 +13,8 @@ html {
 main {
   width: 90%;
   background-color: #f4f1ec;
+  display: flex;
+  flex-direction: column;
 }
 
 /*
@@ -29,6 +31,8 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+
 
 
 
