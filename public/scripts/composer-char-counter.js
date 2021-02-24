@@ -1,8 +1,5 @@
 $(document).ready(function() {
-  console.log("Doc ready");
-  $('form').on('submit', function(event) {
-    event.preventDefault();
-  })
+  
 
   //tweetForm.on..
   $(".tweet-text").on('keyup', function(event) {
