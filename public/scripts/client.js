@@ -18,12 +18,12 @@ $(document).ready(function() {
       }
     });
   };
-  const $tweetButton = $('#btn');
-  $tweetButton.click((e) => {
-    e.preventDefault();
+  // const $tweetButton = $('#btn');
+  // $tweetButton.click((e) => {
+  //   e.preventDefault();
 
-    createTweetElement();
-  });
+  //   createTweetElement();
+  // });
 
   const renderPosts = (posts) => {
     const $main = $('main');
@@ -67,6 +67,7 @@ $(document).ready(function() {
       $main.append(tweetSection);
     }
   };
+  createTweetElement();
 });
 
 
