@@ -20,12 +20,18 @@ $(document).ready(function() {
         url: "/tweets",
         data: $(this).serialize()
       });
-      return;
+ 
+
     }
     else {
       $('h4').removeClass('hide-it');
     }
   });
+
+
+
+
+ 
   
   
   
