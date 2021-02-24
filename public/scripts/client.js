@@ -5,9 +5,30 @@
  */
 
 $(document).ready(function() {
+  function createTweetElement() {
+  
+    console.log("Doc ready");
+    $.ajax({
+      url: 'http://localhost:8080/tweets/',
+      method: 'GET',
+      dataType: 'json',
+      success: (posts) => {
+        renderPosts(posts);
+      }
+    });
+  };
+
+  const renderPosts = (posts) => {
+    const $main = $('main');
+
+    for (post of posts) {
+      const tweetSection = tweetHTML(post);
+      $main.append(tweetSection);
+    }
+  };
 
   function tweetHTML(post) {
-    
+
     console.log(post);
     const $tweetText = post.content.text;
     const oneDay = 24 * 60 * 60 * 1000;
@@ -43,37 +64,15 @@ $(document).ready(function() {
       </div>
     </section>
     `;
-
   }
+  createTweetElement();
 
-  function createTweetElement() {
-  
-    console.log("Doc ready");
-    $.ajax({
-      url: 'http://localhost:8080/tweets/',
-      method: 'GET',
-      dataType: 'json',
-      success: (posts) => {
-        renderPosts(posts);
-      }
-    });
-  };
   // const $tweetButton = $('#btn');
   // $tweetButton.click((e) => {
   //   e.preventDefault();
 
   //   createTweetElement();
   // });
-
-  const renderPosts = (posts) => {
-    const $main = $('main');
-
-    for (post of posts) {
-      const tweetSection = tweetHTML(post)
-      $main.append(tweetSection);
-    }
-  };
-  createTweetElement();
 });
 
 
