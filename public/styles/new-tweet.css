@@ -33,7 +33,10 @@ label {
   border-bottom: 4px solid black;
 }
 button {
-  
   background-color: #4056A1;
   color: white;
+}
+
+textarea {
+  margin-top: 3px;
 }
