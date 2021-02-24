@@ -20,6 +20,7 @@ $(document).ready(function() {
         url: "/tweets",
         data: $(this).serialize()
       });
+      createTweetElement();
  
 
     }
@@ -29,33 +30,40 @@ $(document).ready(function() {
   });
 
 
-
+  function loadTweets () {
+    $.ajax({
+      url: '/tweets/',
+      method: 'GET',
+      dataType: 'json',
+      success: (posts) => {
+        return;
+      }
+    });
+  }
 
  
-  
-  
-  
 
   function createTweetElement() {
   
-    console.log("Doc ready");
     $.ajax({
       url: 'http://localhost:8080/tweets/',
       method: 'GET',
       dataType: 'json',
       success: (posts) => {
-        renderPosts(posts);
+        for (let post of posts) {
+          renderPosts(post);
+        }
+        
       }
     });
   };
 
-  const renderPosts = (posts) => {
-    const $main = $('main');
+  const renderPosts = (post) => {
+    const $tweetContainer = $('#tweet-container');
 
-    for (post of posts) {
-      const tweetSection = tweetHTML(post);
-      $main.append(tweetSection);
-    }
+    const tweetSection = tweetHTML(post);
+    $tweetContainer.prepend(tweetSection);
+    
   };
   function timeDiff(time) {
     const oneDay = 24 * 60 * 60 * 1000;
@@ -76,7 +84,6 @@ $(document).ready(function() {
   }
   function tweetHTML(post) {
 
-    console.log(post);
     const $tweetText = post.content.text;
     const $UtcTime = post.created_at;
     const diffDays = timeDiff($UtcTime);
@@ -84,7 +91,7 @@ $(document).ready(function() {
     const $userName = post.user.name;
     const $userHandle = post.user.handle;
     return `
-    <section class="past-tweet">
+    <article class="past-tweet">
       <div class="profile">
         <div class="profile-info">
           <img src="${$userImg}" class="tweet-img">
@@ -105,7 +112,7 @@ $(document).ready(function() {
           <i class="fas fa-heart"></i>
         </div>
       </div>
-    </section>
+    </article>
     `;
   }
   createTweetElement();

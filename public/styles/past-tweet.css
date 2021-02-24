@@ -1,5 +1,13 @@
-.past-tweet {
+#tweet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 80%;
+}
+
+
+.past-tweet {
+  width: 100%;
   font-family: 'Source Sans Pro', sans-serif;
   border: solid 2px black;
   margin: 10px;
