@@ -1,7 +1,7 @@
 $(document).ready(function() {
-  $("form").on('submit', (event) => {
-    event.preventDefault();
-  });
+  // $("form").on('submit', (event) => {
+  //   event.preventDefault();
+  // });
   
 
   //tweetForm.on..

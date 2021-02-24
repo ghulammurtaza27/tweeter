@@ -5,6 +5,29 @@
  */
 
 $(document).ready(function() {
+
+  $("form").on('submit', function (event) {
+    
+    event.preventDefault();
+    const $textInput = $(this).serialize().slice(5);
+    console.log($textInput);
+    
+    if ($textInput.length <= 140 && $textInput.length !== 0) {
+      $.ajax({
+        method: "POST",
+        url: "/tweets",
+        data: $(this).serialize()
+      });
+      return;
+    }
+    else if ($textInput.length > 140) {
+      $("main").prepend("<h4> Tweet Length is invalid!</h4>");
+    } 
+  });
+  
+  
+  
+
   function createTweetElement() {
   
     console.log("Doc ready");
@@ -26,17 +49,29 @@ $(document).ready(function() {
       $main.append(tweetSection);
     }
   };
+  function timeDiff(time) {
+    const oneDay = 24 * 60 * 60 * 1000;
+    const presentDate = new Date();
+    const dateCreated = new Date(time).toLocaleString();
+    const dateOf = new Date(dateCreated);
+    const result = Math.round(Math.abs((dateOf - presentDate) / oneDay));
+    if(result === 0) {
+      return `Today`;
+    }
+    else if (result ===1) {
+      return `Yesterday`;
+    }
+    else {
+      return `${result} days ago`;
+    }
 
+  }
   function tweetHTML(post) {
 
     console.log(post);
     const $tweetText = post.content.text;
-    const oneDay = 24 * 60 * 60 * 1000;
-    const presentDate = new Date();
     const $UtcTime = post.created_at;
-    const dateCreated = new Date($UtcTime).toLocaleString();
-    const dateOf = new Date(dateCreated);
-    const diffDays = Math.round(Math.abs((dateOf - presentDate) / oneDay));
+    const diffDays = timeDiff($UtcTime);
     const $userImg = post.user.avatars;
     const $userName = post.user.name;
     const $userHandle = post.user.handle;
@@ -55,7 +90,7 @@ $(document).ready(function() {
         ${$tweetText}
       </div>
       <div class="tweet-engagement">
-        <p>${diffDays} days ago</p>
+        <p>${diffDays}</p>
         <div class="tweet-icons">
           <i class="fas fa-flag"></i>
           <i class="fas fa-retweet"></i>
