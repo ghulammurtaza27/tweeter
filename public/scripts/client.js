@@ -9,15 +9,29 @@ $(document).ready(function() {
 
 
   // allows nav button to control sliding of tweet form
-  $("#tweet-compose").click(function() {
-    $(".new-tweet").slideToggle("slow");
-    $('#tweet-text').focus();
-  });
+  $("#tweet-compose").click(tweetSlider);
 
 
 
   //post request for tweet submission
-  $("form").on('submit', function (event) {
+  $("form").on('submit', postRequest);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  function tweetSlider() {
+    $(".new-tweet").slideToggle("slow");
+    $('#tweet-text').focus();
+  }
+  
+  function postRequest(event) {
     
 
     event.preventDefault();
@@ -47,7 +61,7 @@ $(document).ready(function() {
     else {
       $('h4').removeClass('hide-it');
     }
-  });
+  }
 
   function resetCounter() {
     // function reset counter after tweet submission used in post request
@@ -64,9 +78,6 @@ $(document).ready(function() {
     return div.innerHTML;
   }
   
-  
-  
- 
 
   function createTweetElement() {
     //generates get request and calls render post function on success
@@ -145,14 +156,6 @@ $(document).ready(function() {
     </article>
     `;
   }
-  
-
-  // const $tweetButton = $('#btn');
-  // $tweetButton.click((e) => {
-  //   e.preventDefault();
-
-  //   createTweetElement();
-  // });
 });
 
 
