@@ -8,21 +8,31 @@ $(document).ready(function() {
   //hides tweet form as a default on page load
   $(".new-tweet").hide();
 
+
+
+  // gets data and renders as tweets on page
   createTweetElement();
 
+
+  // allows nav button to control sliding of tweet form
   $("#tweet-compose").click(function() {
-    // allows nav button to control sliding of tweet form
     $(".new-tweet").slideToggle("slow");
     $('#tweet-text').focus();
-
   });
 
+
+
+  //post request for tweet submission
   $("form").on('submit', function (event) {
-    //tweet submission
+    
 
     event.preventDefault();
 
+
+
     const $textInput = $('#tweet-text').val();
+
+    //ensure tweet length is valid before sending post request
     if ($textInput.length <= 140 && $textInput.length !== 0) {
 
       $('h4').addClass('hide-it');
@@ -65,7 +75,7 @@ $(document).ready(function() {
  
 
   function createTweetElement() {
-  
+    //generates get request and calls render post function on success
     $.ajax({
       url: 'http://localhost:8080/tweets/',
       method: 'GET',
@@ -81,6 +91,7 @@ $(document).ready(function() {
   };
 
   function renderPosts(post) {
+    //adds tweet to the page with correct html and tweet info
     const $tweetContainer = $('#tweet-container');
 
     const tweetSection = tweetHTML(post);
@@ -88,6 +99,8 @@ $(document).ready(function() {
     
   };
   function timeDiff(time) {
+
+    //used to calculate tweet age
     const oneDay = 24 * 60 * 60 * 1000;
     const presentDate = new Date();
     const dateCreated = new Date(time).toLocaleString();
@@ -105,6 +118,7 @@ $(document).ready(function() {
 
   }
   function tweetHTML(post) {
+    //adds relevant information to each tweet html
 
     const $tweetText = post.content.text;
     const $UtcTime = post.created_at;
