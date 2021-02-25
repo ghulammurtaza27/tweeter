@@ -5,34 +5,21 @@
  */
 
 $(document).ready(function() {
+  //hides tweet form as a default on page load
   $(".new-tweet").hide();
 
+  createTweetElement();
+
   $("#tweet-compose").click(function() {
+    // allows nav button to control sliding of tweet form
     $(".new-tweet").slideToggle("slow");
     $('#tweet-text').focus();
 
   });
 
-  function resetCounter() {
-    let $input = $(".tweet-text");
-    let $form = $input.closest('form');
-    let $counter = $form.find(".counter");
-    $counter.html(140);
-  }
-
-  const escape =  function(str) {
-    let div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  }
-
-
   $("form").on('submit', function (event) {
+    //tweet submission
 
-    
-
-    
-    
     event.preventDefault();
 
     const $textInput = $('#tweet-text').val();
@@ -41,12 +28,6 @@ $(document).ready(function() {
       $('h4').addClass('hide-it');
 
       const $textInput2 = $(this).serialize();
-
-
-      const safeHTML = `<p>${escape($textInput2)}</p>`;
-
-
-
 
       $.ajax({
         method: "POST",
@@ -64,6 +45,20 @@ $(document).ready(function() {
     }
   });
 
+  function resetCounter() {
+    // function reset counter after tweet submission used in post request
+    let $input = $(".tweet-text");
+    let $form = $input.closest('form');
+    let $counter = $form.find(".counter");
+    $counter.html(140);
+  }
+  
+  function escape (str) {
+    // function to save site from cross site scripting
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
   
   
   
@@ -85,7 +80,7 @@ $(document).ready(function() {
     });
   };
 
-  const renderPosts = (post) => {
+  function renderPosts(post) {
     const $tweetContainer = $('#tweet-container');
 
     const tweetSection = tweetHTML(post);
@@ -142,7 +137,7 @@ $(document).ready(function() {
     </article>
     `;
   }
-  createTweetElement();
+  
 
   // const $tweetButton = $('#btn');
   // $tweetButton.click((e) => {
