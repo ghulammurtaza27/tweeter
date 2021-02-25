@@ -9,6 +9,8 @@ $(document).ready(function() {
 
   $("#tweet-compose").click(function() {
     $(".new-tweet").slideToggle("slow");
+    $('#tweet-text').focus();
+
   });
 
   function resetCounter() {

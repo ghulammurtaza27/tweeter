@@ -42,3 +42,10 @@ button {
 textarea {
   margin-top: 3px;
 }
+
+@media (min-width: 600px) {
+  .new-tweet {
+    padding: 0;
+    margin: 4px;
+  }
+}

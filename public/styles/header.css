@@ -9,3 +9,15 @@ header {
   background-image: url(http://www.transparenttextures.com/patterns/rough-diagonal.png);
 
 }
+
+@media (min-width: 600px) {
+  
+  header {
+    flex-basis: 2;
+    -webkit-order: 2;
+    order: 2;
+    margin-top: 160px;
+    padding-top: 0;
+    width: 30%;
+  }
+}
