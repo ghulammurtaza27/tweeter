@@ -5,8 +5,7 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #7c8000;
-  background-image: url(http://www.transparenttextures.com/patterns/rough-diagonal.png);
+  background: linear-gradient(90deg, rgba(130,40,40,1) 0%, rgba(245,138,11,1) 78%);
 
 }
 
@@ -18,6 +17,6 @@ header {
     order: 2;
     margin-top: 160px;
     padding-top: 0;
-    width: 30%;
+    width: 40%;
   }
 }
