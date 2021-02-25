@@ -20,8 +20,18 @@ $(document).ready(function() {
     $counter.html(140);
   }
 
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
 
   $("form").on('submit', function (event) {
+
+    
+
+    
     
     event.preventDefault();
 
@@ -30,10 +40,18 @@ $(document).ready(function() {
 
       $('h4').addClass('hide-it');
 
+      const $textInput2 = $(this).serialize();
+
+
+      const safeHTML = `<p>${escape($textInput2)}</p>`;
+
+
+
+
       $.ajax({
         method: "POST",
         url: "/tweets",
-        data: $(this).serialize(),
+        data: $textInput2,
         success: (data) => {
           $('#tweet-text').val("").focus();
           createTweetElement();
@@ -45,6 +63,8 @@ $(document).ready(function() {
       $('h4').removeClass('hide-it');
     }
   });
+
+  
   
   
  
@@ -109,7 +129,7 @@ $(document).ready(function() {
         </div>
       </div>
       <div class="tweet-txt">
-        ${$tweetText}
+        ${escape($tweetText)}
       </div>
       <div class="tweet-engagement">
         <p>${diffDays}</p>
