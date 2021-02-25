@@ -18,9 +18,13 @@ $(document).ready(function() {
       $.ajax({
         method: "POST",
         url: "/tweets",
-        data: $(this).serialize()
+        data: $(this).serialize(),
+        success: (data) => {
+          $('#tweet-text').val("");
+          createTweetElement();
+        }
       });
-      createTweetElement();
+      
  
 
     }
@@ -30,17 +34,7 @@ $(document).ready(function() {
   });
 
 
-  function loadTweets () {
-    $.ajax({
-      url: '/tweets/',
-      method: 'GET',
-      dataType: 'json',
-      success: (posts) => {
-        return;
-      }
-    });
-  }
-
+  
  
 
   function createTweetElement() {
@@ -50,6 +44,7 @@ $(document).ready(function() {
       method: 'GET',
       dataType: 'json',
       success: (posts) => {
+        $('#tweet-container').empty();
         for (let post of posts) {
           renderPosts(post);
         }
