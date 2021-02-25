@@ -5,6 +5,19 @@
  */
 
 $(document).ready(function() {
+  $(".new-tweet").hide();
+
+  $("#tweet-compose").click(function() {
+    $(".new-tweet").slideToggle("slow");
+  });
+
+  function resetCounter() {
+    let $input = $(".tweet-text");
+    let $form = $input.closest('form');
+    let $counter = $form.find(".counter");
+    $counter.html(140);
+  }
+
 
   $("form").on('submit', function (event) {
     
@@ -20,20 +33,17 @@ $(document).ready(function() {
         url: "/tweets",
         data: $(this).serialize(),
         success: (data) => {
-          $('#tweet-text').val("");
+          $('#tweet-text').val("").focus();
           createTweetElement();
+          resetCounter();
         }
       });
-      
- 
-
     }
     else {
       $('h4').removeClass('hide-it');
     }
   });
-
-
+  
   
  
 

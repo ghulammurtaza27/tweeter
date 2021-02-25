@@ -5,6 +5,9 @@
   width: 80%;
 }
 
+#btn {
+  cursor: pointer;
+}
 
 .past-tweet {
   width: 100%;

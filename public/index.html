@@ -34,8 +34,9 @@
     <nav>
       <span class="tweeter-title">tweeter</span>
       <div class="nav-right">
+        
         <div class="nav-text1"><strong>Write</strong> a new tweet!</div>
-        <i class="fas fa-angle-double-down"></i>
+        <button id="tweet-compose"><i class="fas fa-angle-double-down"></i></button>
       </div>
     </nav>
     <header>
@@ -52,7 +53,6 @@
     <main class="container">
       <h4 class ="hide-it"> Tweet Length is invalid!</h4>
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
         <form method="POST" action="/tweets/" class="tweet-form">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" class="tweet-text" id="tweet-text"></textarea>

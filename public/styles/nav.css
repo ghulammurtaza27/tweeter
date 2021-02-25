@@ -11,6 +11,23 @@ nav {
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 }
+#tweet-compose {
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+  padding-bottom: 3px;
+}
+.fa-angle-double-down {
+  position: relative;
+}
+
+
+.fa-angle-double-down:hover {
+  top: 5px;
+}
+
+
+
 /*
 #ignore2{
   transform:rotate(90deg);
