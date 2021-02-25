@@ -18,3 +18,10 @@ This project utilizes HTML, CSS, JS, jQuery and AJAX on the front-end, and Node,
 - Body-Parser
 - Chance
 - MD5
+
+## Screenshots
+
+!["Screenshot of desktop view of project"](https://github.com/ghulammurtaza27/tweeter/blob/master/docs/Image%202021-02-26%20at%203.41%20AM.jpg)
+
+
+!["Screenshot of mobile view of project"](https://github.com/ghulammurtaza27/tweeter/blob/master/docs/Image%202021-02-26%20at%203.42%20AM.jpg)
